@@ -1,0 +1,23 @@
+#!/bin/bash -l 
+#SBATCH -A mp309
+#SBATCH -C haswell
+#SBATCH -p debug
+#SBATCH -N 1
+#SBATCH -t 00:10:00 
+#SBATCH -J one-upc
+#SBATCH -o one-upc.%j.out
+#SBATCH -e one-upc.%j.err
+
+
+# Specify path to your input file here
+INPUT=test.txt
+OUTPUT=restult.txt
+
+cd ${PWD}
+srun -n 1 ./kmer_hash $SCRATCH/my_datasets/${INPUT} -s ${OUTPUT}
+srun -n 2 ./kmer_hash $SCRATCH/my_datasets/${INPUT} -s ${OUTPUT}
+srun -n 4 ./kmer_hash $SCRATCH/my_datasets/${INPUT} -s ${OUTPUT}
+srun -n 8 ./kmer_hash $SCRATCH/my_datasets/${INPUT} -s ${OUTPUT}
+srun -n 16 ./kmer_hash $SCRATCH/my_datasets/${INPUT} -s ${OUTPUT}
+srun -n 32 ./kmer_hash $SCRATCH/my_datasets/${INPUT} -s ${OUTPUT}
+
