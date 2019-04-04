@@ -20,4 +20,4 @@ srun -n 4 ./kmer_hash $SCRATCH/my_datasets/${INPUT} -s ${OUTPUT}
 srun -n 8 ./kmer_hash $SCRATCH/my_datasets/${INPUT} -s ${OUTPUT}
 srun -n 16 ./kmer_hash $SCRATCH/my_datasets/${INPUT} -s ${OUTPUT}
 srun -n 32 ./kmer_hash $SCRATCH/my_datasets/${INPUT} -s ${OUTPUT}
-
+srun -n 64 ./kmer_hash $SCRATCH/my_datasets/${INPUT} -s ${OUTPUT}
